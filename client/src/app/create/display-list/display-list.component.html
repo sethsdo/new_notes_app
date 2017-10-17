@@ -1,0 +1,8 @@
+<hr>
+<h1>Display</h1>
+<div style="overflow:scroll; height:400px;">
+  <div class="contianer jumbotron" *ngFor="let note of notes | orderby: 'createdAt':'desc'">
+    <p>{{ note.note }}</p>
+    <p>{{ note.createdAt | date: "MM/dd/yy h:mm:ss a" }}</p>
+  </div>
+</div>

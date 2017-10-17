@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>
+    Welcome to Anonymous Notes!
+  </h1>
+  <hr>
+  <h1>Creat new note</h1>
+  <form (submit)="onSubmit()" #heroForm="ngForm">
+    <div class="form-group">
+      Notes:
+      <input type="text" class="form-control" id="note" name="note" required minlength="4" [(ngModel)]="new_note.note" #currentNote='ngModel'>
+
+      <span *ngIf="currentNote.errors && (currentNote.dirty || currentNote.touched)" class="alert">
+        <span class="warn" [hidden]="!currentNote.errors.required">Note is required.</span>
+        <span class="warn" [hidden]="!currentNote.errors.minlength">Note must be at least 4 characters long.</span>
+      </span>
+    </div>
+    <input type="submit" [disabled]="!heroForm.form.valid" class="btn btn-success">
+  </form>
+
+  <app-display-list [notes]="notes"></app-display-list>
+</div>
+
